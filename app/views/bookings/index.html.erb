@@ -2,16 +2,14 @@
  
 <table>
   <tr>
-    <th>Title</th>
-    <th>Text</th>
+    <th>Date</th>
     <th></th>
   </tr>
  
-  <% @bookings.each do |booking| %>
+  <% @booking.each do |b| %>
     <tr>
-      <td><%= booking.title %></td>
-      <td><%= booking.text %></td>
-      <td><%= link_to 'Show', booking_path(booking) %></td>
+      <td><%= b.date %></td>
+      <td><%= link_to 'Show', booking_path(b) %></td>
     </tr>
   <% end %>
 </table>

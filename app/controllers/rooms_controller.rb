@@ -10,20 +10,25 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    #@user = User.find_by(id: session[:user_id])
   end
   
   def create
     @room_name_param = params[:room][:title].to_s
-    
+    @booking_date_param = params[:room][:date].to_s
+
     @user = User.find_by(id: session[:user_id])
     @room = Room.find_by(title: @room_name_param)
 
+    #Saving into many-to-many table
     @user.rooms << @room
     @user.save
 
-    if @room.save && @user.save
-      return redirect_to rooms_path
+    @booking = Booking.new(date: @booking_date_param, user_id: @user.id, room_id: @room.id)
+    @booking.save
+
+    if @room.save && @user.save && @booking.save
+      flash[:success] = "Your booking has been saved!"
+      return redirect_to bookings_path
     else
       flash[:error] = "There is a problem with the booking"
       return redirect_to rooms_path

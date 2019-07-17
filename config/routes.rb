@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'users/new'
   get '/users/:id', to: 'users#show'
   get 'homepage/index'
-  post '/bookings',  to: 'bookings#create'
   get '/bookings/:id', to: 'bookings#show'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
