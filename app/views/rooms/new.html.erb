@@ -1,0 +1,20 @@
+<h1>Create a new Room</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<%= form_for(@room, url: rooms_path) do |form| %>
+
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+
+    <%= form.label :image %><br>
+    <%= form.text_field :image %>
+
+    <%= form.submit %>
+  
+ 
+  <% end %>
+     </div>
+  </div>

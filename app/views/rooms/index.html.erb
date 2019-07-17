@@ -1,0 +1,10 @@
+<% provide(:title, 'All rooms') %>
+<h1>All rooms</h1>
+
+<ul class="liststyle">
+  <% @rooms.each do |room| %>
+    <li>
+      <%= link_to room.address,  "rooms/" + room.id.to_s%>
+    </li>
+  <% end %>
+</ul>

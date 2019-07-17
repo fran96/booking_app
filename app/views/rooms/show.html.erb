@@ -1,0 +1,28 @@
+
+<%= form_for @room, url: rooms_path, :method => :POST do |f| %>
+    <p>
+      <strong>Title:</strong>
+      <%= f.text_field :title,:readonly => true, class: 'form-control' %>
+    </p>
+    
+    <p>
+      <strong>address:</strong>
+       <%= f.text_field :address,:readonly => true, class: 'form-control' %>
+    </p>
+
+    <p>
+      <strong>image:</strong>
+       <%= f.text_field :image,:readonly => true, class: 'form-control' %>
+    </p>
+    <p>
+     <strong>date:</strong>
+     <%= text_field_tag :date, params[:date], id: 'date' %>
+    </p>
+
+    <p>
+    <strong>user:</strong>
+    <%= current_user.name %>
+   </p>
+
+    <%= f.submit "Create booking", class: "btn" %>
+  <% end %>

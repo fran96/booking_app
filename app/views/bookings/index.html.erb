@@ -1,0 +1,17 @@
+<h1>Listing bookings</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.title %></td>
+      <td><%= booking.text %></td>
+      <td><%= link_to 'Show', booking_path(booking) %></td>
+    </tr>
+  <% end %>
+</table>
