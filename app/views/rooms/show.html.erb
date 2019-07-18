@@ -19,10 +19,14 @@
      <%= text_field_tag :date, params[:date], id: 'date' %>
     </p>
 
-    <p>
-    <strong>user:</strong>
-    <%= current_user.name %>
-   </p>
+    <% if logged_in? %>
+      <p>
+        <strong>user:</strong>
+        <%= current_user.name %>
+      </p>
+    <% else %>
+      <p>test</p>
+    <% end %>
 
     <%= f.submit "Create booking", class: "btn" %>
   <% end %>
