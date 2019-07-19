@@ -16,8 +16,8 @@ class RoomsController < ApplicationController
   end
   
   def create
-    @room_name_param = params[:room][:title].to_s
-    @booking_date_param = params[:room][:date].to_s
+    @room_name_param = params[:room][:title]
+    @booking_date_param = params[:date]
 
     @user = User.find_by(id: session[:user_id])
     @room = Room.find_by(title: @room_name_param)
@@ -26,8 +26,11 @@ class RoomsController < ApplicationController
     @user.rooms << @room
     @user.save
 
-    @booking = Booking.new(date: @booking_date_param, user_id: @user.id, room_id: @room.id)
+
+    @booking_code = Digest::MD5.hexdigest(@booking_date_param.to_s + @user.id.to_s)
+    @booking = Booking.new(date: @booking_date_param, user_id: @user.id, room_id: @room.id, booking_code: @booking_code)
     @booking.save
+    
 
     if @room.save && @user.save && @booking.save
       flash[:success] = "Your booking has been saved!"

@@ -6,5 +6,6 @@ class BookingsController < ApplicationController
 
     def show
         @booking = Booking.find(params[:id])
+        @room = Room.find_by(id: @booking.room_id)
     end
 end
