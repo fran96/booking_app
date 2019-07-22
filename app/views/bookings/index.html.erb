@@ -1,15 +1,19 @@
-<h1>Listing bookings</h1>
+<h1>Your bookings</h1>
  
+<% if @booking.present? then %>
 <table>
   <tr>
-    <th>Date</th>
-    <th></th>
+    <th>Booking code</th>
+    <th>View details</th>
   </tr>
  
   <% @booking.each do |b| %>
     <tr>
-      <td><%= b.date %></td>
+      <td><%= b.booking_code %></td>
       <td><%= link_to 'Show', booking_path(b) %></td>
     </tr>
   <% end %>
 </table>
+<% else %>
+<p> You have no bookings </p>
+<% end %>

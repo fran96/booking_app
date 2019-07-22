@@ -1,12 +1,13 @@
 class RoomsController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user,   only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :index]
+  before_action :correct_user,   only: [:edit, :update]
 
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     end
   end
+
   def index
     @rooms = Room.all
   end
