@@ -5,8 +5,11 @@ room_list = [
   [ "Room 4", "Test address 4", "Test image 4"]
 ]
 
-room_list.each do |title, address, image|
-  Room.create( title: title, address: address, image: image)
+check_tbl = Room.any?
+if check_tbl.eql? false
+  room_list.each do |title, address, image|
+    Room.create( title: title, address: address, image: image)
+  end
 end
 
 
