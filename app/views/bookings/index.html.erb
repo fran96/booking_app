@@ -1,19 +1,8 @@
-<h1>Your bookings</h1>
- 
-<% if @booking.present? then %>
-<table>
-  <tr>
-    <th>Booking code</th>
-    <th>View details</th>
-  </tr>
- 
-  <% @booking.each do |b| %>
-    <tr>
-      <td><%= b.booking_code %></td>
-      <td><%= link_to 'Show', booking_path(b) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="booking-index">
+<% if @bookings.present? then %>
+  <h1 class="ui header">Your Bookings</h1>
+  <%= render partial: 'bookings/partials/booking_index', collection: @bookings, as: :booking %>
 <% else %>
-<p> You have no bookings </p>
+  <div class="ui warning message"> You have no bookings </div>
 <% end %>
+</div>

@@ -1,0 +1,14 @@
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr>
+    <th>Booking code</th>
+    <th>View details</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= booking.booking_code %></td>
+      <td><%= link_to 'Show', booking_path(booking), class: 'ui button' %></td>
+    </tr>
+  </tbody>
+</table>

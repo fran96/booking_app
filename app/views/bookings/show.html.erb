@@ -1,26 +1,4 @@
-
-<p>
-<strong>Booking code:</strong>
-<%= @booking.booking_code %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @booking.date %>
-</p>
-
-<p>
-  <strong>Room title:</strong>
-  <%= @room.title %>
-</p>
-
-<p>
-  <strong>Room address:</strong>
-  <%= @room.address %>
-</p>
-
-<p>
-  <strong>Room image:</strong>
-  <%= @room.image %>
-</p>
-
+<div class="booking-index">
+  <h2 class="ui header">Booking</h2>
+  <%= render partial: 'bookings/partials/booking_show', locals: { booking: @booking, room: @room }  %>
+</div>
