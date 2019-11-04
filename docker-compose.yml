@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:11
     ports:
-      - "5432:5432"
+      - "5430:5432"
     environment:
       POSTGRES_PASSWORD: password1234
     volumes:
