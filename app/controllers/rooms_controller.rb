@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
+
   before_action :logged_in_user, only: [:show, :edit, :update, :index]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def current_user
     if session[:user_id]
@@ -14,6 +15,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    puts @room.inspect
   end
   
   def create
@@ -23,10 +25,8 @@ class RoomsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     @room = Room.find_by(title: @room_name_param)
 
-    #Saving into many-to-many table
     @user.rooms << @room
     @user.save
-
 
     @booking_code = Digest::MD5.hexdigest(@booking_date_param.to_s + @user.id.to_s)
     @booking = Booking.new(date: @booking_date_param, user_id: @user.id, room_id: @room.id, booking_code: @booking_code)

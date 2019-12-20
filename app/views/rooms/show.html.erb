@@ -1,4 +1,3 @@
-
 <%= form_for @room, url: rooms_path, :method => :POST do |f| %>
     <p>
       <strong>Title:</strong>
@@ -6,16 +5,48 @@
     </p>
     
     <p>
-      <strong>address:</strong>
+      <strong>Address:</strong>
        <%= f.text_field :address,:readonly => true, class: 'form-control' %>
     </p>
 
     <p>
-      <strong>image:</strong>
-       <%= f.text_field :image,:readonly => true, class: 'form-control' %>
+      <strong>Square meteres: </strong>
+      <%= @room.try(:diameter) ? @room.diameter : 'na'%>
+      <%= @room.try(:radius) ? "x #{@room.radius}" : 'na' %>
     </p>
+
     <p>
-     <strong>date:</strong>
+      <strong>Contins balcony: </strong>
+      <%= @room.try(:balcony) ? @room.balcony : 'na'%>
+    </p>
+
+    <p>
+      <strong>Number of beds: </strong>
+      <%= @room.try(:no_beds) ? @room.no_beds : 'na'%>
+    </p>
+
+    <p>
+      <strong>Number of windows: </strong>
+      <%= @room.try(:no_windows) ? @room.no_windows : 'na'%>
+    </p>
+
+    <p>
+      <strong>Contains balcony:</strong>
+      <%= f.label humanize(:balcony) %>
+    </p>
+
+    <p>
+      <strong>Contains heating:</strong>
+      <%= f.label humanize(:heating) %>
+    </p>
+
+    <p>
+      <strong>Contains furniture:</strong>
+      <%= f.label humanize(:furnished) %>
+    </p>
+
+    <p>
+     <strong>Date:</strong>
      <%= text_field_tag :date, params[:date], id: 'date' %>
     </p>
 
